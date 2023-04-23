@@ -82,10 +82,10 @@ const UsersMapScreen = ({navigation}) => {
         setLocationStatus('You are Here');
 
         //getting the Longitude from the location json
-        const currentLongitude = JSON.stringify(position.coords.longitude);
+        const currentLongitude = JSON.parse(position.coords.longitude);
 
         //getting the Latitude from the location json
-        const currentLatitude = JSON.stringify(position.coords.latitude);
+        const currentLatitude = JSON.parse(position.coords.latitude);
 
         //Setting Longitude state
         setCurrentLongitude(currentLongitude);
@@ -110,7 +110,6 @@ const UsersMapScreen = ({navigation}) => {
         //Will give you the location on location change
 
         setLocationStatus('You are Here');
-        console.log(position);
 
         //getting the Longitude from the location json
         const currentLongitude = JSON.parse(position.coords.longitude);
@@ -133,7 +132,8 @@ const UsersMapScreen = ({navigation}) => {
       },
     );
   };
-
+  console.log(currentLongitude);
+  console.log(currentLatitude);
   return (
     <SafeAreaView style={{flex: 1}}>
       <TouchableOpacity
@@ -158,7 +158,7 @@ const UsersMapScreen = ({navigation}) => {
               latitude: currentLatitude,
               longitude: currentLongitude,
             }}
-            onDragEnd={e => alert(JSON.stringify(e.nativeEvent.coordinate))}
+            onDragEnd={e => alert(JSON.parse(e.nativeEvent.coordinate))}
             title={'Vous êtes ici'}
             //description={'This is a description of the marker'}
           />
